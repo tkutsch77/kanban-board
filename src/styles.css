@@ -1,0 +1,63 @@
+:root {
+  --bg: #0f1115;
+  --surface: #171a21;
+  --line: #262b35;
+  --text: #e9edf3;
+  --muted: #9aa5b4;
+  --accent: #4f8cff;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 'Segoe UI Variable Text', 'Segoe UI', Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+.column { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.column h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 10px; }
+li { justify-content: space-between; flex-wrap: wrap; }
+.actions { display: flex; gap: 4px; }
+.actions button { padding: 2px 8px; background: transparent; border-color: var(--line); color: var(--text); }
+.actions button:disabled { opacity: 0.3; cursor: default; }
+@media (max-width: 720px) { .board { grid-template-columns: 1fr; } }
+
+main { max-width: 960px; margin: 0 auto; padding: 48px 20px 80px; }
+
+h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 28px; }
+.loading { color: var(--muted); }
+
+form { display: flex; gap: 8px; margin-bottom: 24px; }
+
+input {
+  flex: 1; padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--surface); color: inherit; font: inherit;
+}
+input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+button {
+  padding: 10px 16px; border-radius: 8px; border: 1px solid var(--accent);
+  background: var(--accent); color: #fff; font: inherit; font-weight: 600; cursor: pointer;
+}
+button:hover { filter: brightness(1.08); }
+
+ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+}
+li.done span { color: var(--muted); text-decoration: line-through; }
+
+.toggle {
+  width: 24px; height: 24px; padding: 0; border-radius: 6px;
+  background: transparent; border: 1px solid var(--line); color: var(--accent);
+  display: grid; place-items: center; font-size: 13px;
+}
+.toggle[aria-pressed='true'] { border-color: var(--accent); }
